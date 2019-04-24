@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const BCRYPT_SALT_ROUNDS = 10;
-const fs = require('fs');
 const jwt = require("jsonwebtoken");
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
@@ -57,7 +56,6 @@ const register = (req, res, next) => {
             res.json('User already exists');
         }
     });
-
 };
 
 const login = (req, res, next) => {
@@ -73,13 +71,14 @@ const login = (req, res, next) => {
                     if (match) {
                         const jwtUser = { email: user.email, userId: user._id };
                         const token = jwt.sign(jwtUser, 'RESTFULAPIs');
-                        res.json({ token: token, user: jwtUser });
+                        // res.json({ token: token, user: jwtUser });
+                        res.json('User Logged in');
                     } else {
-                        res.json('Passwords not matching');
+                        res.json('Incorrect email or password');
                     }
                 });
             } else {
-                res.json('Email not found');
+                res.json('Incorrect email or password');
             }
         }
     });

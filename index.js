@@ -1,19 +1,21 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const fs = require('fs');
 const mongoose = require('mongoose');
 const ngrok = require('ngrok');
 
 const app = require('express')();
 
-require('./models/userModel');
+require('./models/user_model');
+require('./models/course_model');
 
 const userRoutes = require('./routes/user_routes.js');
+const courseRoutes = require('./routes/course_routes.js');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/users', userRoutes);
+app.use('/courses', courseRoutes);
 
 mongoose.connect('mongodb://127.0.0.1:27017/ec_db', { useNewUrlParser: true });
 let db = mongoose.connection;
