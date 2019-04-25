@@ -3,7 +3,7 @@ const Course = mongoose.model('Course');
 
 /*
 * Lister tous les cours
-*/
+* */
 const listCourses = (req, res) => {
     Course.find({}, (err, courses) => {
         if (err) {
@@ -16,10 +16,10 @@ const listCourses = (req, res) => {
 
 /*
 * Ajouter un cours
-*/
+* */
 const addCourse = (req, res) => {
     Course.findOne({ name : req.body.name }, (err, course) => {
-        if (course == null) { // Aucun utilisateur n'utilise cet email
+        if (course == null) { // Le cours n'existe pas encore dans la base de données
             let newCourse = new Course(req.body);
             newCourse.save((err, course) => {
                 if (err) {
@@ -36,7 +36,7 @@ const addCourse = (req, res) => {
 
 /*
 * Obtenir un cours à partir de son nom
-*/
+* */
 const getCourseByName = (req, res) => {
     Course.findOne({ name : req.params.name }, (err, course) => {
         if (err) {
@@ -49,7 +49,7 @@ const getCourseByName = (req, res) => {
 
 /*
 * Obtenir tous les cours disponibles pour un niveau
-*/
+* */
 const getCoursesByLevel = (req, res) => {
     Course.find({ schoolLevel : req.params.schoolLevel }, (err, courses) => {
         if (err) {
