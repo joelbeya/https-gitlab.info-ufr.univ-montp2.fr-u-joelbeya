@@ -5,8 +5,9 @@ const ngrok = require('ngrok');
 
 const app = require('express')();
 
-require('./models/user_model');
 require('./models/course_model');
+require('./models/email_verif_model');
+require('./models/user_model');
 
 const userRoutes = require('./routes/user_routes.js');
 const courseRoutes = require('./routes/course_routes.js');
@@ -17,7 +18,12 @@ app.use(bodyParser.json());
 app.use('/users', userRoutes);
 app.use('/courses', courseRoutes);
 
-mongoose.connect('mongodb://127.0.0.1:27017/ec_db', { useNewUrlParser: true });
+/* Connect to MongoDB through mongoose */
+mongoose.connect(
+    'mongodb://127.0.0.1:27017/ec_db',
+    { useNewUrlParser: true, useFindAndModify: false }
+);
+
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {

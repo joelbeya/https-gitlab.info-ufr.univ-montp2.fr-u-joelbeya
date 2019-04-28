@@ -3,6 +3,11 @@ let Schema = mongoose.Schema;
 
 var UserSchema = mongoose.Schema(
     {
+        active: {
+            type: Boolean,
+            required: true,
+            default: false
+        },
         kind: {
             type: String,
             required: true,
@@ -26,11 +31,6 @@ var UserSchema = mongoose.Schema(
         hash_password: {
             type: String,
             required: true
-        },
-        formula: {
-            type: String,
-            required: true,
-            enum: ['progression', 'support']
         }
     },
     {
@@ -47,6 +47,11 @@ var StudentSchema = mongoose.Schema(
             type: String,
             required: true,
             enum: ['6e', '5e', '4e', '3e', '2nde', '1ere', 'Term']
+        },
+        formula: {
+            type: String,
+            required: true,
+            enum: ['progression', 'support']
         }
     },
     { discriminatorKey: 'kind' }

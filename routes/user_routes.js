@@ -3,6 +3,8 @@ const router = express.Router();
 const userController = require('../controllers/user_controller.js');
 
 router.get('/', userController.list);
+router.get('/sendverif', userController.sendEmailVerif);
+router.get('/verify', userController.verifyEmail);
 router.get('/:email', userController.getUserByEmail);
 
 router.post('/signup', userController.register);
