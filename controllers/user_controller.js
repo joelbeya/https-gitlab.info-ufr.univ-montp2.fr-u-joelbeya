@@ -13,7 +13,7 @@ const EmailVerif = mongoose.model('EmailVerif');
 /*
 * Delete a user retrieved by his email
 **/
-const deleteUser = (req, res) => {
+exports.deleteUser = (req, res) => {
     User.deleteOne({ email : req.body.email }, (err, user) => {
         if (err) {
             return res.status(400).send({ message: err });
@@ -26,7 +26,7 @@ const deleteUser = (req, res) => {
 /*
 * Retrive a user retrieved by his email
 **/
-const getUserByEmail = (req, res) => {
+exports.getUserByEmail = (req, res) => {
     User.findOne({ email : req.body.email }, (err, user) => {
         if (err) {
             return res.status(400).send({ message: err });
@@ -39,7 +39,7 @@ const getUserByEmail = (req, res) => {
 /*
 * List all users of the database
 **/
-const list = (req, res) => {
+exports.list = (req, res) => {
     User.find({}, (err, users) => {
         if (err) return res.status(400).send({ message: err });
         res.json(users);
@@ -49,7 +49,7 @@ const list = (req, res) => {
 /*
 * Login a user
 **/
-const login = (req, res, next) => {
+exports.login = (req, res, next) => {
     // On cherche d'abord si l'utilisateur existe
     User.findOne({ email : req.body.email }, (err, user) => {
         if (err) return res.status(400).send({ message: err });
@@ -76,7 +76,7 @@ const login = (req, res, next) => {
 /*
 * Register a user
 **/
-const register = (req, res, next) => {
+exports.register = (req, res, next) => {
 
     /* Vérifier qu'aucun utilisateur n'utilise l'email du nouvel utilisateur */
     User.findOne({ email : req.body.email }, (err, user) => {
@@ -124,7 +124,7 @@ const register = (req, res, next) => {
 /*
 * Send verification email
 **/
-const sendEmailVerif = (req, res, next) => {
+exports.sendEmailVerif = (req, res, next) => {
     /* Here we are configuring our SMTP Server details. */
 
     let smtpTransport = nodemailer.createTransport({
@@ -172,7 +172,7 @@ const sendEmailVerif = (req, res, next) => {
 /*
 * Verify email
 **/
-const verifyEmail = (req, res, next) => {
+exports.verifyEmail = (req, res, next) => {
 
     let queryUrl = req.protocol + '://' + req.get('host');
 
@@ -195,13 +195,3 @@ const verifyEmail = (req, res, next) => {
         res.end('<h1>Request is from unknown source</h1>');
     }
 }
-
-module.exports = {
-    deleteUser,
-    getUserByEmail,
-    list,
-    login,
-    register,
-    sendEmailVerif,
-    verifyEmail
-};

@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const ngrok = require('ngrok');
 
 const app = require('express')();
 
@@ -27,17 +26,11 @@ mongoose.connect(
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
-    console.log("Connected to MongoDB");
+    console.log('\x1b[36m%s\x1b[0m', 'Connected to MongoDB');
 });
 
 let port = process.env.PORT || 8080;
 
-/* Obtention d'une URL publique en utilisant le service ngrok */
-(async function() {
-    const publicUrl = await ngrok.connect(port);
-    console.log('Url du serveur : ', publicUrl);
-})();
-
 app.listen(port, () => {
-    console.log('Server running on port ' + port);
+    console.log('\x1b[36m%s\x1b[0m', 'Server running on port ' + port);
 });

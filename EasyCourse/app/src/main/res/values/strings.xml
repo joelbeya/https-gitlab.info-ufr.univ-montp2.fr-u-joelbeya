@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">EasyCourse</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="login_button_main">Login</string>
+    <string name="login">Login</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_submission">LOGIN</string>
+    <string name="lastname">Lastname</string>
+    <string name="firstname">Firstname</string>
+    <string name="_submission">SIGN UP</string>
+    <string name="already_a_member_login">Already a member? Log in</string>
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
+    <string name="signup">SIGNUP</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="student">Student</string>
+    <string name="parent">Parent</string>
+
+    <string name="facebook_app_id">418973835326680</string>
+    <string name="fb_login_protocol_scheme">fb418973835326680</string>
+    <string name="or_connect_with_facebook">Or connect with facebook :</string>
+
+</resources>
