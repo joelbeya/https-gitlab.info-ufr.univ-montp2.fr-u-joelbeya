@@ -9,7 +9,7 @@ const Course = mongoose.model('Course');
 var CourseSetSchema = mongoose.Schema(
     {
         courses: {
-            type: [CourseSchema],
+            type: [ CourseSchema ],
             required: true,
         },
         schoolLevel: {

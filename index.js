@@ -14,6 +14,14 @@ const courseRoutes = require('./routes/course_routes.js');
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    res.send(
+        '<center><h3 style="font-family: arial;">Welcome on EasyCourse </a> !'
+        +'<h3></center>'
+    );
+});
+
 app.use('/users', userRoutes);
 app.use('/courses', courseRoutes);
 

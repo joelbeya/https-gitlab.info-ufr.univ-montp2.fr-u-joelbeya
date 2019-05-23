@@ -10,6 +10,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 import com.example.easycourse.Fragments.WizardFragment;
+import com.example.easycourse.Fragments.WizardStep2Fragment;
+import com.example.easycourse.Fragments.WizardStep3Fragment;
 import com.example.easycourse.R;
 
 public class WizardActivity extends FragmentActivity {
@@ -63,7 +65,19 @@ public class WizardActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new WizardFragment();
+            switch (position) {
+                case 0:
+                    return new WizardFragment();
+
+                case 1:
+                    return new WizardStep2Fragment();
+
+                case 2:
+                    return new WizardStep3Fragment();
+
+                default:
+                    return null;
+            }
         }
 
         @Override

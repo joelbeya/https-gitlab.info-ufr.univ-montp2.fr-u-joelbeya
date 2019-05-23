@@ -124,7 +124,7 @@ exports.register = (req, res, next) => {
 /*
 * Send verification email
 **/
-exports.sendEmailVerif = (req, res, next) => {
+exports.sendVerifEmail = (req, res, next) => {
     /* Here we are configuring our SMTP Server details. */
 
     let smtpTransport = nodemailer.createTransport({

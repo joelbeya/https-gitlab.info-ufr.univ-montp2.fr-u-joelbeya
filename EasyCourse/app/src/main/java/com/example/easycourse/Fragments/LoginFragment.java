@@ -144,7 +144,6 @@ public class LoginFragment extends Fragment {
             mTiPassword.setError("Password should not be empty !");
         }
 
-
         if (err == 0) {
             compositeDisposable.add(easyCourseAPI.login(email, password)
                     .subscribeOn(Schedulers.io())

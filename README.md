@@ -10,7 +10,7 @@
 
 * #### Lancer Serveo :
 
-    ssh -R easycourse:80:localhost:8888 serveo.net
+    ssh -R easycourse:80:localhost:8080 serveo.net
 
 * #### Lancer le serveur
 

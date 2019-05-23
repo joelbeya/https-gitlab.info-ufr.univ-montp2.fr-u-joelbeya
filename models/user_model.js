@@ -61,7 +61,7 @@ var Student = User.discriminator('Student', StudentSchema);
 var ParentSchema = mongoose.Schema(
     {
         children : {
-            type: [StudentSchema],
+            type: [ StudentSchema ],
             required: true
         },
     },

@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <!--<include layout="@layout/content_main" />-->
 
@@ -36,12 +23,16 @@
             android:layout_height="wrap_content"
             android:onClick="launchLoginActivity"
             android:text="@string/login"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="0.5"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_signup"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
             android:onClick="launchSignupActivity"
             android:text="@string/signup"

@@ -59,7 +59,7 @@
             android:padding="12dp"
             android:text="@string/login_submission"/>
 
-        <TextView android:id="@+id/link_signup"
+        <TextView android:id="@+id/connect_facebook"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
