@@ -17,6 +17,8 @@ package com.example.easycourse.Fragments;
         import com.facebook.CallbackManager;
         import com.facebook.FacebookCallback;
         import com.facebook.FacebookException;
+        import com.facebook.GraphRequest;
+        import com.facebook.GraphResponse;
         import com.facebook.login.LoginResult;
         import com.facebook.login.widget.LoginButton;
         import com.google.android.material.textfield.TextInputLayout;
@@ -35,6 +37,9 @@ package com.example.easycourse.Fragments;
         import static com.example.easycourse.utils.Validation.validateFields;
 
         import com.example.easycourse.model.User;
+
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
 public class LoginFragment extends Fragment {
 
@@ -74,11 +79,19 @@ public class LoginFragment extends Fragment {
         });
 
         mBtFacebook.setReadPermissions(Arrays.asList("email", "public_profile"));
+        mBtFacebook.setFragment(this);
         mBtFacebook.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                // Retrieving access token using the LoginResult
-                AccessToken accessToken = loginResult.getAccessToken();
+
+                AccessToken accessToken = AccessToken.getCurrentAccessToken();
+                boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+                if (isLoggedIn) {
+                    useLoginInformation(accessToken);
+                }
+
+                Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -102,10 +115,44 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    private void useLoginInformation(AccessToken accessToken) {
+        /**
+         Creating the GraphRequest to fetch user details
+         1st Param - AccessToken
+         2nd Param - Callback (which will be invoked once the request is successful)
+         **/
+        GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+            //OnCompleted is invoked once the GraphRequest is successful
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try {
+                    String name = object.getString("name");
+                    String email = object.getString("email");
+                    String image = object.getJSONObject("picture").getJSONObject("data").getString("url");
+
+                    Toast.makeText(
+                            getActivity(), "Welcome, " + name, Toast.LENGTH_SHORT
+                    ).show();
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // We set parameters to the GraphRequest using a Bundle.
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,picture.width(200)");
+        request.setParameters(parameters);
+        // Initiate the GraphRequest
+        request.executeAsync();
+    }
+
     @Override
-    public void onActivityResult(int requestCode, int resulrCode, Intent data) {
-        mCallbackManager.onActivityResult(requestCode, resulrCode, data);
-        super.onActivityResult(requestCode, resulrCode, data);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -155,7 +202,7 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void accept(User userResponse) throws Exception {
                             Toast.makeText(
-                                    getActivity(), "Welcome back, " + userResponse.getFirstname(), Toast.LENGTH_SHORT
+                                    getActivity(), "Welcome, " + userResponse.getFirstname(), Toast.LENGTH_SHORT
                             ).show();
 
                             Intent intent = new Intent(getActivity(), DashboardActivity.class);
