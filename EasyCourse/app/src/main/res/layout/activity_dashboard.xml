@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Activities.DashboardActivity">
 
+    <TextView style="?android:textAppearanceMedium"
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="70dp"
+        android:padding="12dp"
+        android:textStyle="bold"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

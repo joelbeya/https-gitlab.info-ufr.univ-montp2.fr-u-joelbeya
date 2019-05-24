@@ -54,10 +54,6 @@ public class WizardActivity extends FragmentActivity {
         }
     }
 
-    /**
-     * A simple pager adapter that represents 3 WizardFragment objects, in
-     * sequence.
-     */
     private class WizardAdapter extends FragmentStatePagerAdapter {
         public WizardAdapter(FragmentManager fm) {
             super(fm);

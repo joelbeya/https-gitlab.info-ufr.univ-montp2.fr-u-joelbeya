@@ -39,7 +39,8 @@
         </activity>
 
         <activity android:name=".Activities.WizardActivity" />
-        <activity android:name=".Activities.SignupActivity" />
+        <activity android:name=".Activities.SignupActivity">
+        </activity>
         <activity
             android:name=".Activities.AuthenticationActivity"
             android:label="@string/title_activity_login">

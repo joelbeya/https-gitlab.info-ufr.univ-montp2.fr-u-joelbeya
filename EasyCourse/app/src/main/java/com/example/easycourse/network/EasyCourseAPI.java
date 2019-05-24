@@ -25,7 +25,7 @@ public interface EasyCourseAPI {
     * */
     @POST("users/login")
     @FormUrlEncoded
-    Observable<String> login(
+    Observable<User> login(
             @Field("email") String email,
             @Field("password") String password
     );

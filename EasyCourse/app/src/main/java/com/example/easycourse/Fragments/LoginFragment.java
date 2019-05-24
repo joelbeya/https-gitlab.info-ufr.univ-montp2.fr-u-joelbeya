@@ -9,6 +9,7 @@ package com.example.easycourse.Fragments;
         import android.widget.EditText;
         import android.widget.Toast;
 
+        import com.example.easycourse.Activities.DashboardActivity;
         import com.example.easycourse.R;
         import com.example.easycourse.network.EasyCourseAPI;
         import com.example.easycourse.network.RetrofitClient;
@@ -32,6 +33,8 @@ package com.example.easycourse.Fragments;
 
         import static com.example.easycourse.utils.Validation.validateEmail;
         import static com.example.easycourse.utils.Validation.validateFields;
+
+        import com.example.easycourse.model.User;
 
 public class LoginFragment extends Fragment {
 
@@ -148,12 +151,16 @@ public class LoginFragment extends Fragment {
             compositeDisposable.add(easyCourseAPI.login(email, password)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Consumer<String>() {
+                    .subscribe(new Consumer<User>() {
                         @Override
-                        public void accept(String userResponse) throws Exception {
+                        public void accept(User userResponse) throws Exception {
                             Toast.makeText(
-                                    getActivity(), "" + userResponse, Toast.LENGTH_SHORT
+                                    getActivity(), "Welcome back, " + userResponse.getFirstname(), Toast.LENGTH_SHORT
                             ).show();
+
+                            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                            intent.putExtra("currentUser", userResponse.getFirstname());
+                            startActivity(intent);
                         }
                     }));
         }
