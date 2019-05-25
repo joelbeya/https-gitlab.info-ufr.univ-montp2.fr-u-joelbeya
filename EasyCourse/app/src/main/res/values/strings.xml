@@ -35,4 +35,20 @@
     <string name="fb_login_protocol_scheme">fb418973835326680</string>
     <string name="or_connect_with_facebook">Or connect with facebook :</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">BEYA NTUMBA Joel</string>
+    <string name="nav_header_subtitle">joelbeya.bj@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">My Courses</string>
+    <string name="menu_slideshow">My Videos Courses</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share/Excercises</string>
+    <string name="menu_send">Send</string>
+    <string name="cours">Courses List</string>
+    <string name="title_note_list">Courses Available</string>
+    <string name="title_note_detail">Note Detail</string>
+
 </resources>

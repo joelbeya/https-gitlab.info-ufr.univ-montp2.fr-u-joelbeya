@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.easycourse">
+    package="com.example.easycourse" >
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -14,10 +14,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-        <activity android:name=".Activities.DashboardActivity"></activity>
+        tools:targetApi="m" >
+        <activity android:name=".Activities.NoteDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".Activities.NoteListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".Activities.DashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -29,28 +35,33 @@
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Activities.WizardActivity" />
-        <activity android:name=".Activities.SignupActivity">
+        <activity android:name=".Activities.WizardActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".Activities.SignupActivity"
+            android:theme="@style/AppTheme">
         </activity>
         <activity
             android:name=".Activities.AuthenticationActivity"
-            android:label="@string/title_activity_login">
+            android:theme="@style/AppTheme"
+            android:label="@string/title_activity_login" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.easycourse.Activities.MainActivity" />
         </activity>
         <activity
             android:name=".Activities.MainActivity"
-            android:label="@string/app_name">
+            android:theme="@style/AppTheme"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

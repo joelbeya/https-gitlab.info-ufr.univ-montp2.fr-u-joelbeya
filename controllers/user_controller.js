@@ -58,12 +58,12 @@ exports.login = (req, res, next) => {
 
             /* Comparaison du mot de passe saisi et du hash */
             bcrypt.compare(req.body.password, user.hash_password, (err, match) => {
-                if (!match) return res.end('Incorrect email or password');
+                if (!match) return res.send({"msg" : "Incorrect email or password"});
 
                 // Make sure the user has been verified
-                if (!user.active) return res.send(
-                    'Your account has not been verified.'
-                );
+                if (!user.active) return res.send({
+                    "msg" : "Your account has not been verified."
+                });
 
                 const jwtUser = { email: user.email, userId: user._id };
                 user.token = jwt.sign(jwtUser, 'RESTFULAPIs');
@@ -71,7 +71,7 @@ exports.login = (req, res, next) => {
                 res.json(user);
             });
         } else {
-            res.end('Incorrect email or password');
+            res.send({ "msg" : "Incorrect email or password"});
         }
     });
 };

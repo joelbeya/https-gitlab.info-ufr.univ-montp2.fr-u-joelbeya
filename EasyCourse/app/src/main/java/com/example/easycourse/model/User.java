@@ -6,6 +6,7 @@ public class User {
     private String firstname;
     private String email;
     private String password;
+    private String msg;
     private String token;
 
     public String getRole() {
@@ -22,6 +23,10 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getMsg() {
+        return msg;
     }
 
     public String getPassword() {

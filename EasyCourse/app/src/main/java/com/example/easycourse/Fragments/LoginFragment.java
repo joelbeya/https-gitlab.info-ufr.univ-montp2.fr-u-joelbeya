@@ -1,6 +1,7 @@
 package com.example.easycourse.Fragments;
 
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -201,13 +202,38 @@ public class LoginFragment extends Fragment {
                     .subscribe(new Consumer<User>() {
                         @Override
                         public void accept(User userResponse) throws Exception {
-                            Toast.makeText(
-                                    getActivity(), "Welcome, " + userResponse.getFirstname(), Toast.LENGTH_SHORT
-                            ).show();
 
-                            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-                            intent.putExtra("currentUser", userResponse.getFirstname());
-                            startActivity(intent);
+                            try {
+                                if (userResponse.getEmail() == null) {
+                                    Toast.makeText(
+                                            getActivity(),
+                                            userResponse.getMsg(),
+                                            Toast.LENGTH_SHORT
+                                    ).show();
+                                } else {
+                                    Toast.makeText(
+                                            getActivity(),
+                                            "Welcome, " + userResponse.getFirstname(),
+                                            Toast.LENGTH_SHORT
+                                    ).show();
+
+                                    SharedPreferences settings = getActivity().getSharedPreferences(
+                                            "UserInfo", 0
+                                    );
+
+                                    SharedPreferences.Editor editor = settings.edit();
+                                    editor.putString("Username",
+                                            userResponse.getFirstname() + " " + userResponse.getLastname());
+                                    editor.putString("Email", userResponse.getEmail());
+                                    editor.commit();
+
+                                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                                    intent.putExtra("currentUser", userResponse.getFirstname());
+                                    startActivity(intent);
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }));
         }
