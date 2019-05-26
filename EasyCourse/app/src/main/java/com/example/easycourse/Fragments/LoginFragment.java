@@ -11,6 +11,7 @@ package com.example.easycourse.Fragments;
         import android.widget.Toast;
 
         import com.example.easycourse.Activities.DashboardActivity;
+        import com.example.easycourse.Final_MainActivity;
         import com.example.easycourse.R;
         import com.example.easycourse.network.EasyCourseAPI;
         import com.example.easycourse.network.RetrofitClient;
@@ -227,7 +228,7 @@ public class LoginFragment extends Fragment {
                                     editor.putString("Email", userResponse.getEmail());
                                     editor.commit();
 
-                                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                                    Intent intent = new Intent(getActivity(), Final_MainActivity.class);
                                     intent.putExtra("currentUser", userResponse.getFirstname());
                                     startActivity(intent);
                                 }
