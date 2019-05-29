@@ -33,9 +33,7 @@ public class DashboardActivity extends AppCompatActivity
             "Linux",
             "MacOS",
             "MS DOS",
-            "Symbian",
             "Windows 10",
-            "Windows XP",
     };
 
     public static int[] osImages = {
@@ -44,9 +42,7 @@ public class DashboardActivity extends AppCompatActivity
             R.mipmap.linux,
             R.mipmap.macos,
             R.mipmap.msdos,
-            R.mipmap.symbian,
             R.mipmap.windows10,
-            R.mipmap.winxp,
     };
 
     @Override

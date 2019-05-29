@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:textStyle="bold"
-        android:text="Welcome on Easy Course !"/>
+        android:text="@string/welcome_on_easy_course"/>
 
 </ScrollView>

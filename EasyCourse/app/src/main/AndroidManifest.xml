@@ -17,9 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m" >
         <activity android:name=".Activities.NoteDetailActivity"
+            android:parentActivityName=".Activities.NoteListActivity"
+            android:label="@string/note_detail"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".Activities.NoteListActivity"
+            android:label="@string/courses_available"
+            android:parentActivityName=".Activities.DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".Activities.DashboardActivity"

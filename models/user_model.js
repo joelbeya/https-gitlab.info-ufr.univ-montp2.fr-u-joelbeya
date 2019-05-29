@@ -8,7 +8,7 @@ var UserSchema = mongoose.Schema(
             required: true,
             default: false
         },
-        kind: {
+        role: {
             type: String,
             required: true,
             enum: ['Parent', 'Student']
@@ -35,7 +35,7 @@ var UserSchema = mongoose.Schema(
     },
     {
         collection: 'user',
-        discriminatorKey: 'kind'
+        discriminatorKey: 'role'
     },
 );
 
@@ -45,16 +45,21 @@ var StudentSchema = mongoose.Schema(
     {
         schoolLevel: {
             type: String,
-            required: true,
-            enum: ['6e', '5e', '4e', '3e', '2nde', '1ere', 'Term']
+            enum: [
+                'Middle school',
+                'High school',
+                'Undergraduate',
+                'Postgraduate'
+            ],
+            required: true
         },
         formula: {
             type: String,
-            required: true,
-            enum: ['progression', 'support']
+            enum: ['progression', 'support'],
+            required : true
         }
     },
-    { discriminatorKey: 'kind' }
+    { discriminatorKey: 'role' }
 )
 var Student = User.discriminator('Student', StudentSchema);
 
@@ -65,6 +70,6 @@ var ParentSchema = mongoose.Schema(
             required: true
         },
     },
-    { discriminatorKey: 'kind' }
+    { discriminatorKey: 'role' }
 );
 var Parent = User.discriminator('Parent', ParentSchema);

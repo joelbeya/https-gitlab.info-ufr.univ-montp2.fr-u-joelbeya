@@ -1,6 +1,8 @@
 package com.example.easycourse.network;
 
 import com.example.easycourse.model.Course;
+import com.example.easycourse.model.Parent;
+import com.example.easycourse.model.Student;
 import com.example.easycourse.model.User;
 
 import io.reactivex.Observable;
@@ -19,6 +21,18 @@ public interface EasyCourseAPI {
     * */
     @POST("users/signup")
     Observable<User> register(@Body User user);
+
+    /*
+     * Add new Student
+     * */
+    @POST("users/signup")
+    Observable<Student> register(@Body Student user);
+
+    /*
+     * Add new Student
+     * */
+    @POST("users/signup")
+    Observable<Parent> register(@Body Parent user);
 
     /*
     * Login User

@@ -7,8 +7,10 @@ const request = require('request');
 
 const BCRYPT_SALT_ROUNDS = 10;
 
-const User = mongoose.model('User');
 const EmailVerif = mongoose.model('EmailVerif');
+const Parent = mongoose.model('Parent');
+const Student = mongoose.model('Student');
+const User = mongoose.model('User');
 
 /*
 * Delete a user retrieved by his email
@@ -90,14 +92,16 @@ exports.register = (req, res, next) => {
         if (user) return res.json({ "message" : "User already exists" });
 
         let queryUrl = 'https://' + req.get('host') + '/users/sendverif';
-        let options = {
-          // headers: {'content-type' : 'application/x-www-form-urlencoded'},
-            url : queryUrl,
-            body : req.body,
-            json: true
-        };
+        let options = { url : queryUrl, body : req.body, json: true };
 
-        let newUser = new User(req.body);
+        let newUser;
+
+        // Check if user is Parent or Student
+        if (req.body.role == 'Parent') {
+            newUser = new Parent(req.body);
+        } else {
+            newUser = new Student(req.body);
+        }
 
         /* Cryptage du mot de passe */
         let salt = bcrypt.genSaltSync(BCRYPT_SALT_ROUNDS);

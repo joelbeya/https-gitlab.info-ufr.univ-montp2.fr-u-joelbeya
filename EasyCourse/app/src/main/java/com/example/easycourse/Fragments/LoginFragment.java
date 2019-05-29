@@ -11,7 +11,6 @@ package com.example.easycourse.Fragments;
         import android.widget.Toast;
 
         import com.example.easycourse.Activities.DashboardActivity;
-        import com.example.easycourse.Final_MainActivity;
         import com.example.easycourse.R;
         import com.example.easycourse.network.EasyCourseAPI;
         import com.example.easycourse.network.RetrofitClient;
@@ -175,7 +174,7 @@ public class LoginFragment extends Fragment {
 
     private void goToRegister() {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
-        SignupFragment fragment = new SignupFragment();
+        StudentSignUpFragment fragment = new StudentSignUpFragment();
         ft.replace(R.id.fragmentFrame, fragment, LoginFragment.TAG);
         ft.commit();
     }
@@ -228,7 +227,7 @@ public class LoginFragment extends Fragment {
                                     editor.putString("Email", userResponse.getEmail());
                                     editor.commit();
 
-                                    Intent intent = new Intent(getActivity(), Final_MainActivity.class);
+                                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
                                     intent.putExtra("currentUser", userResponse.getFirstname());
                                     startActivity(intent);
                                 }

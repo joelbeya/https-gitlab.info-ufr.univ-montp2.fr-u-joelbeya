@@ -17,7 +17,7 @@
 
     <ImageView android:src="@drawable/ec_logo"
         android:layout_width="wrap_content"
-        android:layout_height="90dp"
+        android:layout_height="80dp"
         android:layout_gravity="center_horizontal" />
 
         <LinearLayout
@@ -60,7 +60,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="60dp"
-        android:text="Wizard"
+        android:text="@string/wizard"
         app:cornerRadius="50dp"
         android:onClick="launchWizardActivity"/>
 

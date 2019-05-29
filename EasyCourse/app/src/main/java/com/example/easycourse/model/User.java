@@ -1,5 +1,7 @@
 package com.example.easycourse.model;
 
+import java.util.ArrayList;
+
 public class User {
     private String role;
     private String lastname;
@@ -53,8 +55,11 @@ public class User {
         this.password = password;
     }
 
-//    public void setToken(String token) {
-//        this.token = token;
-//    }
-}
+    public void setToken(String token) {
+        this.token = token;
+    }
 
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+}
